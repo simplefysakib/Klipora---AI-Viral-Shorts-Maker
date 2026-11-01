@@ -2,9 +2,9 @@
 
 <p align="center"><img src="https://klipora.sites.tab.bot/img/logo-500.jpg" alt="Klipora AI logo" width="140"></p>
 
-**Klipora AI** is a free AI shorts maker for Android. Paste a YouTube link or pick a video from your phone, and Klipora AI finds the most viral moments, cuts them into 9:16 vertical shorts, and adds word-by-word captions in Hindi, Hinglish or English, ready for YouTube Shorts, Instagram Reels and TikTok.
+**Klipora AI** is a free AI shorts maker for Android. Paste a video link or pick a video from your phone, and Klipora AI finds the most viral moments, cuts them into 9:16 vertical shorts, and adds word-by-word captions in Hindi, Hinglish or English, ready for YouTube Shorts, Instagram Reels and TikTok.
 
-An advanced Android application built with Java and Material Components that uses Gemini AI and Groq Whisper to automatically download, transcribe, score, and format long YouTube videos into viral 9:16 vertical shorts.
+An advanced Android application built with Java and Material Components that uses Gemini AI and Groq Whisper to automatically transcribe, score, and format long videos into viral 9:16 vertical shorts. Works with video links and videos from your phone.
 
 ## Download Klipora AI APK
 
@@ -31,3 +31,12 @@ Website: https://klipora.sites.tab.bot/
 - Android 7.0 or newer (64-bit phones work best).
 - Internet connection.
 - Free Gemini (Google AI Studio) and Groq API keys, added in the app.
+
+## Privacy & Terms
+
+- [Privacy Policy](https://klipora.sites.tab.bot/privacy)
+- [Terms of Use](https://klipora.sites.tab.bot/terms)
+
+## Disclaimer
+
+Klipora AI is an independent app and is not affiliated with, endorsed by or sponsored by YouTube or Google. Only use content you own or have permission to use. You are responsible for the videos you process and for the content you create and share. YouTube, Gemini, Groq, Instagram and TikTok are trademarks of their respective owners.
