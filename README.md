@@ -1,4 +1,4 @@
-# Klipora AI – Viral Shorts Maker for Android
+# Klipora AI – Viral Shorts Maker for Android & Windows
 
 <p align="center"><img src="https://klipora.sites.tab.bot/img/logo-500.jpg" alt="Klipora AI logo" width="140"></p>
 
@@ -19,6 +19,18 @@ Klipora AI is not on the Play Store. Download the APK from the latest release an
 
 Website: https://klipora.sites.tab.bot/
 
+## Download Klipora AI for Windows
+
+**Windows version: all features free.** No ads, no account, no waiting: up to 5 shorts per video, 1080p HD, auto captions and AI face tracking are all unlocked.
+
+- **[⬇️ Klipora_Windows_Setup.exe](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_Windows_Setup.exe)** – installer for 64-bit Windows (recommended). No admin rights needed.
+- **[Klipora_Windows_Portable.zip](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_Windows_Portable.zip)** – portable 64-bit version: unzip and open "Klipora AI.exe". Nothing is installed.
+- **[Klipora_Windows_32bit_Setup.exe](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_Windows_32bit_Setup.exe)** – for older 32-bit Windows PCs.
+
+Works on Windows 7 SP1, 8.1, 10 and 11. Everything it needs is included, so there is nothing else to install. Paste a video link, pick your shorts, and they're saved to your Videos\Klipora folder.
+
+**"Windows protected your PC"?** Klipora AI is new and not yet known to Microsoft SmartScreen, so Windows may show this message the first time. Click **More info**, then **Run anyway**.
+
 ## What's new
 
 - **You get every short you pick.** Choosing 3, 4 or 5 shorts no longer gives just 1: when the best moments sit close together, Klipora looks at the rest of the video for more, and shorts never repeat the same part.
@@ -38,7 +50,7 @@ Website: https://klipora.sites.tab.bot/
 
 ## Requirements
 
-- Android 7.0 or newer (64-bit phones work best).
+- Android 7.0 or newer (64-bit phones work best), or Windows 7 SP1 / 8.1 / 10 / 11.
 - Internet connection.
 - Free Gemini (Google AI Studio) and Groq API keys, added in the app.
 
