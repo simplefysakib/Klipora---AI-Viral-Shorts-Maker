@@ -12,12 +12,19 @@ An advanced Android application built with Java and Material Components that use
 
 **[⬇️ Download the latest Klipora AI APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest)**
 
-- **[arm64 APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_4.6_arm64.apk)** – smaller download, for most modern 64-bit phones.
-- **[Universal APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_4.6_universal.apk)** – works on every Android phone (bigger file).
+- **[arm64 APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_arm64.apk)** – smaller download, for most modern 64-bit phones.
+- **[Universal APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_universal.apk)** – works on every Android phone (bigger file).
 
 Klipora AI is not on the Play Store. Download the APK from the latest release and install it (allow "Install unknown apps" if your phone asks). New versions install over the old one, so your keys, history and unlocks stay.
 
 Website: https://klipora.sites.tab.bot/
+
+## What's new
+
+- **You get every short you pick.** Choosing 3, 4 or 5 shorts no longer gives just 1: when the best moments sit close together, Klipora looks at the rest of the video for more, and shorts never repeat the same part.
+- **Your link stays put** when the screen reloads (dark mode or font size change, split screen, the phone closing the app in the background).
+- **Clear message when storage is full**, plus smaller fixes ("Save all" count, no short ending inside the next one, clearer status text).
+- From the previous update: audio language picker for dubbed videos, cleaner and sharper video, faster export that keeps running in the background, caption fixes.
 
 ## Features
 
