@@ -2,16 +2,16 @@
 
 <p align="center"><img src="https://klipora.sites.tab.bot/img/logo-500.jpg" alt="Klipora AI logo" width="140"></p>
 
-**Klipora AI** is a free AI shorts maker for Android. Paste a video link or pick a video from your phone, and Klipora AI finds the most viral moments, cuts them into 9:16 vertical shorts, and adds word-by-word captions in Hindi, Hinglish or English, ready for Shorts, Reels and TikTok.
+**Klipora AI** is a free AI shorts maker for Android. Paste a video link and Klipora AI finds the most viral moments, cuts them into 9:16 vertical shorts, and adds word-by-word captions in Hindi, Hinglish or English, ready for Shorts, Reels and TikTok.
 
-An advanced Android application built with Java and Material Components that uses Gemini AI and Groq Whisper to automatically transcribe, score, and format long videos into viral 9:16 vertical shorts. Works with video links and videos from your phone.
+An advanced Android application built with Java and Material Components that uses Gemini AI and Groq Whisper to automatically transcribe, score, and format long videos into viral 9:16 vertical shorts. Works with video links.
 
 ## Download Klipora AI APK
 
 **[⬇️ Download the latest Klipora AI APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest)**
 
-- **arm64 APK** – smaller download, for most modern 64-bit phones.
-- **Universal APK** – works on every Android phone (bigger file).
+- **[arm64 APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_4.6_arm64.apk)** – smaller download, for most modern 64-bit phones.
+- **[Universal APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest/download/Klipora_4.6_universal.apk)** – works on every Android phone (bigger file).
 
 Klipora AI is not on the Play Store. Download the APK from the latest release and install it (allow "Install unknown apps" if your phone asks). New versions install over the old one, so your keys, history and unlocks stay.
 
@@ -20,6 +20,7 @@ Website: https://klipora.sites.tab.bot/
 ## Features
 
 - **AI clip picking** – long videos and podcasts become 1 to 5 short clips, strongest moments first.
+- **Audio language picker** – for videos with dubbed audio, choose the language; your shorts and captions use it (original by default).
 - **Auto captions** – word-by-word animated subtitles in Hindi, Hinglish or English, with 10 caption styles.
 - **AI face tracking** – in podcasts the speaker stays in frame, with automatic split screen for two people.
 - **Formats** – 9:16 Shorts / Reels / TikTok, 1:1 Square, 16:9 Wide; blur, fill or fit framing.
