@@ -12,9 +12,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-          curl -fsSL --retry 3 -X POST -o Klipora_Windows_Setup.exe https://temp.sh/lGyIK/Klipora_Windows_Setup.exe
-          curl -fsSL --retry 3 -X POST -o Klipora_Windows_Portable.zip https://temp.sh/swIIy/Klipora_Windows_Portable.zip
-          curl -fsSL --retry 3 -X POST -o Klipora_Windows_32bit_Setup.exe https://temp.sh/beuda/Klipora_Windows_32bit_Setup.exe
+          fetch() { link=$(curl -fsSL --retry 3 "$1" | grep -o 'https://tmpfiles.org/dl/[^"]*' | head -1); curl -fsSL --retry 3 -o "$2" "$link"; }
+          fetch https://tmpfiles.org/wAAkd49w6M7B/klipora_windows_setup.exe Klipora_Windows_Setup.exe
+          fetch https://tmpfiles.org/whAUds9o6CXA/klipora_windows_portable.zip Klipora_Windows_Portable.zip
+          fetch https://tmpfiles.org/wSAUdi9Rfk7h/klipora_windows_32bit_setup.exe Klipora_Windows_32bit_Setup.exe
           : > sums
           echo "98890b06de6314e3c33e9dffbf065914fd092e83d8fadff02d25823aea1521b3  Klipora_Windows_Setup.exe" >> sums
           echo "b9d9c44f35e8d0acb68098ccc9458a20aa138d71962488ab3bdb0d3c922d03ef  Klipora_Windows_Portable.zip" >> sums
