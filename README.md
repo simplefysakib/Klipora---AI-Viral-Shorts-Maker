@@ -6,6 +6,8 @@
 
 An advanced Android application built with Java and Material Components that uses Gemini AI and Groq Whisper to automatically transcribe, score, and format long videos into viral 9:16 vertical shorts. Works with video links.
 
+**Official website: [klipora.sites.tab.bot](https://klipora.sites.tab.bot/)**
+
 ## Download Klipora AI APK
 
 **[⬇️ Download the latest Klipora AI APK](https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/latest)**
