@@ -1,0 +1,24 @@
+name: upload-apks
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch, check and upload APKs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          curl -fsSL --retry 3 -X POST -o Klipora_4.6_universal.apk https://temp.sh/URNJs/Klipora_4.6_universal.apk
+          curl -fsSL --retry 3 -X POST -o Klipora_4.6_arm64.apk https://temp.sh/zKBrs/Klipora_4.6_arm64.apk
+          echo "d4e529a082ee2a583fc8604264fe3dc6366ddcc041e18c88ad72db9202612dc2  Klipora_4.6_universal.apk" > sums
+          echo "f4a7739caa8ae0576d5c741142e62862723407370f40c388bedc45dd87a6f079  Klipora_4.6_arm64.apk" >> sums
+          sha256sum -c sums
+          for f in Klipora_4.6_universal.apk Klipora_4.6_arm64.apk; do
+            curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Content-Type: application/vnd.android.package-archive" \
+              --data-binary @"$f" "https://uploads.github.com/repos/${{ github.repository }}/releases/431019698/assets?name=$f" > /dev/null
+            echo "uploaded $f"
+          done
