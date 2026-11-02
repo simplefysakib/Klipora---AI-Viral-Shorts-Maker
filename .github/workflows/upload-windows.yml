@@ -1,0 +1,28 @@
+name: upload-windows
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch, check and upload the Windows files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          curl -fsSL --retry 3 -X POST -o Klipora_Windows_Setup.exe https://temp.sh/lGyIK/Klipora_Windows_Setup.exe
+          curl -fsSL --retry 3 -X POST -o Klipora_Windows_Portable.zip https://temp.sh/swIIy/Klipora_Windows_Portable.zip
+          curl -fsSL --retry 3 -X POST -o Klipora_Windows_32bit_Setup.exe https://temp.sh/beuda/Klipora_Windows_32bit_Setup.exe
+          : > sums
+          echo "98890b06de6314e3c33e9dffbf065914fd092e83d8fadff02d25823aea1521b3  Klipora_Windows_Setup.exe" >> sums
+          echo "b9d9c44f35e8d0acb68098ccc9458a20aa138d71962488ab3bdb0d3c922d03ef  Klipora_Windows_Portable.zip" >> sums
+          echo "faecd840354aa3c215e99f5a4edbd01d450654a807326c6bcf4242b07e9925bd  Klipora_Windows_32bit_Setup.exe" >> sums
+          sha256sum -c sums
+          for f in Klipora_Windows_Setup.exe Klipora_Windows_Portable.zip Klipora_Windows_32bit_Setup.exe; do
+            case "$f" in *.zip) ct=application/zip;; *) ct=application/vnd.microsoft.portable-executable;; esac
+            curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Content-Type: $ct" \
+              --data-binary @"$f" "https://uploads.github.com/repos/${{ github.repository }}/releases/431053154/assets?name=$f" > /dev/null
+            echo "uploaded $f"
+          done
