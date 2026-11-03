@@ -1,0 +1,41 @@
+name: upload-v50
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch, check and upload release files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          get() {
+            dl=$(curl -fsSL --retry 3 "$1" | grep -o 'https://tmpfiles.org/dl/[^"]*' | head -1)
+            curl -fsSL --retry 3 -o "$2" "$dl"
+          }
+          get https://tmpfiles.org/wGAToB0dvba8/klipora_v32_arm64.apk Klipora_arm64.apk
+          get https://tmpfiles.org/wJAyo30SvGiG/uni_part1.zip u1
+          get https://tmpfiles.org/wUASoz0OvurJ/uni_part2.zip u2
+          cat u1 u2 > Klipora_universal.apk
+          get https://tmpfiles.org/wGAxod0Yv68I/klipora_windows_setup.exe Klipora_Windows_Setup.exe
+          get https://tmpfiles.org/wyAVou0t3hcz/klipora_windows_portable.zip Klipora_Windows_Portable.zip
+          get https://tmpfiles.org/wxAZo20M3aWd/klipora_windows_32bit_setup.exe Klipora_Windows_32bit_Setup.exe
+          echo "f10a1a66758c69d90bc1ccac046470f3a8a34b357a47fb92ba88280f8ec74e94  Klipora_universal.apk" > sums
+          echo "8cf28bb89aa4cbcc368510ff2d5db07151f228c559cf7395781cf8d5ca090fee  Klipora_arm64.apk" >> sums
+          echo "62ee158c42222babf51af0f737cb7e8c1b71a41fb79e4157c1daed00834cac01  Klipora_Windows_Setup.exe" >> sums
+          echo "7b28fd5aae6de8eb154e66df0a0179277d0ef186c61a56e9883afe7abe79cd48  Klipora_Windows_Portable.zip" >> sums
+          echo "c9c5e9242206e34c562407e10bb72f0536940f9ad21f1fd3bbcc528f8c33ea3b  Klipora_Windows_32bit_Setup.exe" >> sums
+          sha256sum -c sums
+          up() {
+            curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Content-Type: $2" \
+              --data-binary @"$1" "https://uploads.github.com/repos/${{ github.repository }}/releases/432916298/assets?name=$1" > /dev/null
+            echo "uploaded $1"
+          }
+          up Klipora_arm64.apk application/vnd.android.package-archive
+          up Klipora_universal.apk application/vnd.android.package-archive
+          up Klipora_Windows_Setup.exe application/vnd.microsoft.portable-executable
+          up Klipora_Windows_Portable.zip application/zip
+          up Klipora_Windows_32bit_Setup.exe application/vnd.microsoft.portable-executable
