@@ -1,12 +1,18 @@
-# Klipora AI – Viral Shorts Maker for Android & Windows
+# Klipora AI APK - free long video to shorts maker for Android
 
 <p align="center"><img src="https://klipora.sites.tab.bot/img/logo-500.jpg" alt="Klipora AI logo" width="140"></p>
 
-**Klipora AI** is a free AI shorts maker for Android. Paste a video link and Klipora AI finds the most viral moments, cuts them into 9:16 vertical shorts, and adds word-by-word captions in Hindi, Hinglish or English, ready for Shorts, Reels and TikTok.
+**Klipora AI is a 100% free long video to shorts maker for Android.** Paste a video link, and Klipora AI finds the most viral moments in a long video or podcast and cuts them into 9:16 vertical shorts for Shorts, Reels and TikTok.
 
-An advanced Android application built with Java and Material Components that uses Gemini AI and Groq Whisper to automatically transcribe, score, and format long videos into viral 9:16 vertical shorts. Works with video links.
+It also has **AI captions** (word-by-word, in Hindi, Hinglish and English), **multiple audio tracks** (pick the dubbed language you want), and **face tracking** for podcasts, with split screen for two speakers. A Windows version is available too.
 
-**Official website: [klipora.sites.tab.bot](https://klipora.sites.tab.bot/)**
+- Free AI captions for every short
+- Multiple audio tracks and dubbed-audio language picker
+- Face tracking for podcast-to-shorts clips
+- 1 to 5 shorts per video, up to 1080p
+- Free Klipora AI APK (not on the Play Store: install the APK from the release)
+
+**Official website: [klipora.sites.tab.bot](https://klipora.sites.tab.bot/)** · [Free APK download](https://klipora.sites.tab.bot/klipora-ai-apk-download) · [Long video to shorts](https://klipora.sites.tab.bot/long-video-to-shorts) · [Podcast to shorts](https://klipora.sites.tab.bot/podcast-to-shorts) · [AI captions shorts maker](https://klipora.sites.tab.bot/ai-captions-shorts-maker)
 
 ## Download Klipora AI APK
 
