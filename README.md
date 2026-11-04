@@ -4,7 +4,7 @@
 
 **Klipora AI is a free long video to shorts maker for Android** (free to download and use). Paste a video link, and Klipora AI finds the most viral moments in a long video or podcast and cuts them into 9:16 vertical shorts for Shorts, Reels and TikTok.
 
-It also has **AI captions** (word-by-word, in Hindi, Hinglish and English), **multiple audio tracks** (pick the dubbed language you want), and **face tracking** for podcasts, with split screen for two speakers. A Windows version is available too.
+It also has **AI captions** (word-by-word, in Hindi, Hinglish and English), **multiple audio tracks** (pick the dubbed language you want), and **face tracking** for podcasts, with split screen for two speakers. On Android the free version makes 1 short per video at 720p; the extra features (captions, face tracking, 1080p, 2 to 5 shorts) unlock by watching a short ad. The Windows version is free with all features.
 
 - AI captions in Hindi, Hinglish and English
 - Multiple audio tracks and dubbed-audio language picker
