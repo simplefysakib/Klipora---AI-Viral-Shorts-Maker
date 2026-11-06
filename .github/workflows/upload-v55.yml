@@ -1,0 +1,38 @@
+name: upload-v55
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch, check and upload release files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          curl -fsSL --retry 5 -o Klipora_arm64.apk 'https://tmpfiles.org/dl/1793944055.7849607f4981f9cb/wTAPJwFy9zDN/up_arm64.apk'
+          curl -fsSL --retry 5 -o p1 'https://tmpfiles.org/dl/1793944056.5c8d5eb38626f091/wzAyJeF1962j/up_uni_part1.zip'
+          curl -fsSL --retry 5 -o p2 'https://tmpfiles.org/dl/1793944056.a04948342bcbd0b7/weAcJTFf9lsg/up_uni_part2.zip'
+          cat p1 p2 > Klipora_universal.apk; rm -f p1 p2
+          curl -fsSL --retry 5 -o Klipora_Windows_Setup.exe 'https://tmpfiles.org/dl/1793944057.2f312bceedae683d/wCA7JTFi9dqM/up_win_setup.exe'
+          curl -fsSL --retry 5 -o Klipora_Windows_32bit_Setup.exe 'https://tmpfiles.org/dl/1793944057.f719f7b0f59f21d4/wLAzJ7FvQKeI/up_win32.exe'
+          curl -fsSL --retry 5 -o Klipora_Windows_Portable.zip 'https://tmpfiles.org/dl/1793944058.42e08a2ea10315c0/wpAhJFF5QGcU/up_win_portable.zip'
+          : > sums
+          echo "2eddc8d24c95f7174ee03d849375c132ac57290831b155533bc44d10ed783aba  Klipora_arm64.apk" >> sums
+          echo "6d077aadafb98ea5db7edc82c31c5a5e9a79e1f53d249cae12f1a62ad5f524e2  Klipora_universal.apk" >> sums
+          echo "e44463eb879009fff8e01ef3155e31dc6bde0c0abf1832f34b49f35ceede383f  Klipora_Windows_Setup.exe" >> sums
+          echo "1e64760b4a1f58c3649eb74870d95c9ddfe8213fcd5712c75163889641c28381  Klipora_Windows_Portable.zip" >> sums
+          echo "21adac70ed46d6e4379047632ca39e0a24a4b8f062754e9f1a15d9f529515d04  Klipora_Windows_32bit_Setup.exe" >> sums
+          sha256sum -c sums
+          up() {
+            curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Content-Type: $2" \
+              --data-binary @"$1" "https://uploads.github.com/repos/${{ github.repository }}/releases/436139755/assets?name=$1" > /dev/null
+            echo "uploaded $1"
+          }
+          up Klipora_arm64.apk application/vnd.android.package-archive
+          up Klipora_universal.apk application/vnd.android.package-archive
+          up Klipora_Windows_Setup.exe application/vnd.microsoft.portable-executable
+          up Klipora_Windows_Portable.zip application/zip
+          up Klipora_Windows_32bit_Setup.exe application/vnd.microsoft.portable-executable
