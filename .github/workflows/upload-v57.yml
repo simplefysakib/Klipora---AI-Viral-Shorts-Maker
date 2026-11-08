@@ -9,16 +9,18 @@ jobs:
     steps:
       - name: Fetch, join and check the APKs
         run: |
+          set -e
+          getdl() { curl -fsSL "$1" | grep -o 'class="download" href="[^"]*"' | sed 's/.*href="//; s/"$//'; }
           mkdir -p assets && cd assets
-          curl -fsSL -o p0 "https://tmpfiles.org/dl/1794169431.f94b65d9239dfc20/w7A05XhHmOF8/klipora_uni_part00.zip"
-          curl -fsSL -o p1 "https://tmpfiles.org/dl/1794169431.5634469527315a19/wqAE5thLm9hT/klipora_uni_part01.zip"
-          curl -fsSL -o p2 "https://tmpfiles.org/dl/1794169432.d1936a6a2d8007b8/w5AL58hfmHDv/klipora_uni_part02.zip"
+          curl -fsSL -o p0 "$(getdl 'https://tmpfiles.org/w7A05XhHmOF8/klipora_uni_part00.zip')"
+          curl -fsSL -o p1 "$(getdl 'https://tmpfiles.org/wqAE5thLm9hT/klipora_uni_part01.zip')"
+          curl -fsSL -o p2 "$(getdl 'https://tmpfiles.org/w5AL58hfmHDv/klipora_uni_part02.zip')"
           echo "dd8d1a27449bc9c66de428a39df461b2eafc1a56cbc007c5d03c07059c5800b7  p0" | sha256sum -c -
           echo "0932bd8066d8d04bfc9a975dc9d52f6ad84f17514a8ac4bb8da42b20fcb3c5d8  p1" | sha256sum -c -
           echo "49909b1dbe25182616c582b57e4036d17533caeea977085f463175a2b49bf771  p2" | sha256sum -c -
           cat p0 p1 p2 > Klipora_universal.apk && rm p0 p1 p2
           echo "bf9cb123a3d51edaca1a7059e040d9e539da5e4a24ab24ab71a3dd7994f18332  Klipora_universal.apk" | sha256sum -c -
-          curl -fsSL -o Klipora_arm64.apk "https://tmpfiles.org/dl/1794169432.39a8ae1817cdbb22/wLAT5vhtmM5w/klipora_v44_free_arm64.apk"
+          curl -fsSL -o Klipora_arm64.apk "$(getdl 'https://tmpfiles.org/wLAT5vhtmM5w/klipora_v44_free_arm64.apk')"
           echo "a5291ec29bd4e6b510a2722e45a031619428259e4f70593355a17230808a819d  Klipora_arm64.apk" | sha256sum -c -
           for f in Klipora_Windows_Setup.exe Klipora_Windows_Portable.zip Klipora_Windows_32bit_Setup.exe; do
             curl -fsSL -o "$f" "https://github.com/simplefysakib/Klipora---AI-Viral-Shorts-Maker/releases/download/v5.6/$f"
@@ -38,4 +40,4 @@ jobs:
 
           Windows files are unchanged from 5.6.
           NOTES_EOF
-          gh release create v5.7 --target main --title "Klipora 5.7" --notes-file notes.md --latest Klipora_universal.apk Klipora_arm64.apk Klipora_Windows_Setup.exe Klipora_Windows_Portable.zip Klipora_Windows_32bit_Setup.exe
+          gh release create v5.7 --repo "$GITHUB_REPOSITORY" --target main --title "Klipora 5.7" --notes-file notes.md --latest Klipora_universal.apk Klipora_arm64.apk Klipora_Windows_Setup.exe Klipora_Windows_Portable.zip Klipora_Windows_32bit_Setup.exe
