@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:clipToPadding="false" android:paddingBottom="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="18dp" android:paddingEnd="18dp" android:paddingTop="14dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Settings" android:textColor="@color/kl_text" android:textSize="24sp" android:textStyle="bold"/>
+                        <!-- v18 (2.9): the Premium card is back in Settings (like 2.7): PRO pass + what each ad unlocks + high-speed and 1080p switches -->
+                        <com.google.android.material.card.MaterialCardView android:id="@+id/cardPremium" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:cardBackgroundColor="#1A1626" app:strokeColor="#3A2F7A">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@drawable/ic_v_crown" app:tint="@color/kl_warn"/>
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:text="Premium" style="@style/Kl.Title" android:textSize="16sp"/>
+                    <TextView android:id="@+id/tvAdsCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 / 10 ads" style="@style/Kl.Body"/>
+                </LinearLayout>
+                <TextView android:id="@+id/tvPremiumStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Watch 10 ads to unlock all premium features for 24 hours." style="@style/Kl.Body"/>
+                <LinearLayout android:id="@+id/layoutAdProgress" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progressAds" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:max="10" app:trackThickness="8dp" app:trackCornerRadius="4dp" app:indicatorColor="@color/kl_warn" app:trackColor="@color/kl_surface2"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnWatchAdSettings" style="@style/Kl.GradientButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="10dp" android:text="Watch ad" app:icon="@drawable/ic_v_ad" app:iconGravity="textStart" app:iconTint="@color/white"/>
+                </LinearLayout>
+                <TextView android:id="@+id/tvTimerCountdown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="PRO active: 23:59:59" android:textColor="@color/kl_success" android:textStyle="bold" android:visibility="gone"/>
+                
+                                <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="12dp" android:layout_marginBottom="4dp" android:background="#2E2752"/>
+
+                                <LinearLayout android:id="@+id/rowPremShorts" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:minHeight="50dp" android:paddingTop="4dp" android:paddingBottom="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_v_sparkle" app:tint="@color/kl_accent" android:importantForAccessibility="no"/>
+                                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2–5 shorts per video" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                                        <TextView android:id="@+id/rowPremShortsSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 ad = this session" style="@style/Kl.Body" android:textSize="11sp"/>
+                                    </LinearLayout>
+                                    <ImageView android:id="@+id/rowPremShortsState" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_v_lock" app:tint="@color/kl_warn" android:contentDescription="Locked"/>
+                                </LinearLayout>
+
+                                <LinearLayout android:id="@+id/rowPremHd" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:minHeight="50dp" android:paddingTop="4dp" android:paddingBottom="4dp" android:background="?attr/selectableItemBackground">
+                                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_v_play" app:tint="@color/kl_accent" android:importantForAccessibility="no"/>
+                                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1080p HD export" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                                            <ImageView android:id="@+id/rowPremHdState" android:layout_width="16dp" android:layout_height="16dp" android:layout_marginStart="6dp" android:src="@drawable/ic_v_lock" app:tint="@color/kl_warn" android:contentDescription="Locked"/>
+                                        </LinearLayout>
+                                        <TextView android:id="@+id/rowPremHdSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Off • 1 ad unlocks 1 hour" style="@style/Kl.Body" android:textSize="11sp"/>
+                                    </LinearLayout>
+                                    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchHd" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                                </LinearLayout>
+
+                                <LinearLayout android:id="@+id/rowPremCaptions" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:minHeight="50dp" android:paddingTop="4dp" android:paddingBottom="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_v_cc" app:tint="@color/kl_accent" android:importantForAccessibility="no"/>
+                                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Auto captions (all styles)" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                                        <TextView android:id="@+id/rowPremCaptionsSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 ad = 1 video" style="@style/Kl.Body" android:textSize="11sp"/>
+                                    </LinearLayout>
+                                    <ImageView android:id="@+id/rowPremCaptionsState" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_v_lock" app:tint="@color/kl_warn" android:contentDescription="Locked"/>
+                                </LinearLayout>
+
+                                <LinearLayout android:id="@+id/rowPremFace" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:minHeight="50dp" android:paddingTop="4dp" android:paddingBottom="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_v_face_track" app:tint="@color/kl_accent" android:importantForAccessibility="no"/>
+                                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AI face tracking (podcasts)" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                                        <TextView android:id="@+id/rowPremFaceSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 ad = your next podcast" style="@style/Kl.Body" android:textSize="11sp"/>
+                                    </LinearLayout>
+                                    <ImageView android:id="@+id/rowPremFaceState" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_v_lock" app:tint="@color/kl_warn" android:contentDescription="Locked"/>
+                                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="2dp" android:minHeight="50dp">
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_v_bolt" app:tint="@color/kl_accent"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="High-speed download" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                            <ImageView android:id="@+id/iconCrownHighSpeed" android:layout_width="16dp" android:layout_height="16dp" android:layout_marginStart="6dp" android:src="@drawable/ic_v_crown" app:tint="@color/kl_warn"/>
+                        </LinearLayout>
+                        <TextView android:id="@+id/tvHighSpeedStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Off (up to 3 MB/s) • 1 ad unlocks 1 hour" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchHighSpeed" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+            
+
+
+            
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" >
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="AI keys" style="@style/Kl.Title"/>
+                    <ImageView android:id="@+id/btnEditApiKeys" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:src="@drawable/ic_v_key" app:tint="@color/kl_text_dim" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Edit keys"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gemini finds the viral moments, Groq Whisper writes the timed transcript." style="@style/Kl.Body" android:textSize="12sp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardGeminiKey" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" app:cardBackgroundColor="@color/kl_surface2" app:cardCornerRadius="14dp" android:clickable="true" android:focusable="true">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <View android:id="@+id/dotGeminiStatus" android:layout_width="9dp" android:layout_height="9dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Gemini" android:textColor="@color/kl_text" android:textStyle="bold"/>
+                        </LinearLayout>
+                        <TextView android:id="@+id/tvGeminiKeyStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Tap to set up" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                    <Space android:layout_width="10dp" android:layout_height="1dp"/>
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardGroqKey" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" app:cardBackgroundColor="@color/kl_surface2" app:cardCornerRadius="14dp" android:clickable="true" android:focusable="true">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <View android:id="@+id/dotGroqStatus" android:layout_width="9dp" android:layout_height="9dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Groq" android:textColor="@color/kl_text" android:textStyle="bold"/>
+                        </LinearLayout>
+                        <TextView android:id="@+id/tvGroqKeyStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Tap to set up" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+                <TextView android:id="@+id/tvMaskedKeys" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="" style="@style/Kl.Body" android:textSize="11sp" android:fontFamily="monospace"/>
+                <LinearLayout android:id="@+id/cardHowToGetKeys" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="10dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Both keys are free: sign in, tap Create API key, paste it here." style="@style/Kl.Body" android:textSize="12sp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnOpenGeminiUrl" style="@style/Kl.TonalButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="50dp" android:text="Get Gemini key" android:textSize="12sp" android:paddingStart="8dp" android:paddingEnd="8dp" android:maxLines="1" app:autoSizeTextType="uniform" app:autoSizeMinTextSize="9sp" app:autoSizeMaxTextSize="12sp"/>
+                        <Space android:layout_width="10dp" android:layout_height="1dp"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnOpenGroqUrl" style="@style/Kl.TonalButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="50dp" android:text="Get Groq key" android:textSize="12sp" android:paddingStart="8dp" android:paddingEnd="8dp" android:maxLines="1" app:autoSizeTextType="uniform" app:autoSizeMinTextSize="9sp" app:autoSizeMaxTextSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" >
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Processing" style="@style/Kl.Title"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Video quality" style="@style/Kl.Label"/>
+                <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupQuality" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true" app:selectionRequired="true">
+                    <com.google.android.material.chip.Chip android:id="@+id/chipQAuto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Auto (720p, fast)"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chipQ1080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1080p HD"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chipQ720" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="720p"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chipQ480" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="480p (low data)"/>
+                </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" >
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <LinearLayout android:id="@+id/btnUpdateYtEngine" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_refresh" app:tint="@color/kl_text_dim"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update video engine" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:id="@+id/btnUpdateYtEngineSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="yt-dlp version: …" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/rowLogs" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_info" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Logs" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:id="@+id/rowLogsSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Technical log of the last job • copy or share" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/ic_v_back" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/rowBattery" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_bolt" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Background processing" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:id="@+id/rowBatterySub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Let Klipora keep working with the screen off" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/ic_v_back" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/btnBugReportSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_mail" app:tint="@color/kl_text_dim"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Report a bug" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:id="@+id/btnBugReportSettingsSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sends device info + recent logs by email" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/btnHelpSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_info" app:tint="@color/kl_text_dim"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Help &amp; support" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:id="@+id/btnHelpSettingsSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email the Klipora team" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Legal (Nov 1 2026): links only, nothing in the app changes -->
+            <com.google.android.material.card.MaterialCardView android:id="@+id/cardLegal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" >
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Legal" style="@style/Kl.Title"/>
+                <LinearLayout android:id="@+id/rowPrivacy" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_key" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Privacy Policy" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="What data is used and why" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/ic_v_back" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/rowTerms" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:background="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_info" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Terms of Use" android:textColor="@color/kl_text" android:textSize="14sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rules for using Klipora" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/ic_v_back" app:tint="@color/kl_text_dim" android:contentDescription="@null"/>
+                </LinearLayout>
+                <TextView android:id="@+id/tvLegalDisclaimer" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Klipora is not affiliated with YouTube or Google. Only use content you own or have permission to use." style="@style/Kl.Body" android:textSize="11sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView android:id="@+id/tvAppVersion" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:gravity="center" android:text="Klipora" style="@style/Kl.Body" android:textSize="11sp"/>
+        </LinearLayout>
+</androidx.core.widget.NestedScrollView>

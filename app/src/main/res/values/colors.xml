@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kl_bg">#0A0A10</color>
+    <color name="kl_surface">#14141D</color>
+    <color name="kl_surface2">#1C1C28</color>
+    <color name="kl_stroke">#2A2A3B</color>
+    <color name="kl_primary">#7C5CFF</color>
+    <color name="kl_primary_dark">#5B3FE0</color>
+    <color name="kl_accent">#22D3EE</color>
+    <color name="kl_pink">#FF4D8D</color>
+    <color name="kl_text">#F4F4F8</color>
+    <color name="kl_text_dim">#9B9BB0</color>
+    <color name="kl_text_faint">#6B6B80</color>
+    <color name="kl_success">#22C55E</color>
+    <color name="kl_warn">#F59E0B</color>
+    <color name="kl_error">#F43F5E</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="klipora_logo_bg">#0A0A10</color>
+</resources>

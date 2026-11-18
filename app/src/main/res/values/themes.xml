@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Kl.WindowAnim" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/kl_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/kl_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/kl_pop_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/kl_pop_exit</item>
+    </style>
+
+    <style name="Theme.Klipora" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/Kl.WindowAnim</item>
+        <item name="colorPrimary">@color/kl_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">#2E2466</item>
+        <item name="colorOnPrimaryContainer">#E6DEFF</item>
+        <item name="colorSecondary">@color/kl_accent</item>
+        <item name="colorOnSecondary">#002A33</item>
+        <item name="colorSecondaryContainer">#2A2A3B</item>
+        <item name="colorOnSecondaryContainer">@color/kl_text</item>
+        <item name="colorTertiary">@color/kl_pink</item>
+        <item name="colorError">@color/kl_error</item>
+        <item name="android:colorBackground">@color/kl_bg</item>
+        <item name="colorSurface">@color/kl_surface</item>
+        <item name="colorOnSurface">@color/kl_text</item>
+        <item name="colorOnSurfaceVariant">@color/kl_text_dim</item>
+        <item name="colorSurfaceContainer">@color/kl_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/kl_surface2</item>
+        <item name="colorSurfaceContainerHighest">@color/kl_surface2</item>
+        <item name="colorSurfaceContainerLow">@color/kl_surface</item>
+        <item name="colorOutline">@color/kl_stroke</item>
+        <item name="colorOutlineVariant">@color/kl_stroke</item>
+        <item name="android:statusBarColor">@color/kl_bg</item>
+        <item name="android:navigationBarColor">@color/kl_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@color/kl_bg</item>
+        <item name="materialCardViewStyle">@style/Kl.Card</item>
+        <item name="chipStyle">@style/Kl.Chip</item>
+    </style>
+
+    <style name="Theme.Klipora.Player" parent="Theme.Klipora">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+    </style>
+
+    <style name="Kl.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/kl_surface</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="strokeColor">@color/kl_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="Kl.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="android:textColor">@color/chip_text</item>
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipCornerRadius">14dp</item>
+        <item name="chipMinHeight">40dp</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Kl.Title" parent="">
+        <item name="android:textColor">@color/kl_text</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Kl.Label" parent="">
+        <item name="android:textColor">@color/kl_text_dim</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.06</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Kl.Body" parent="">
+        <item name="android:textColor">@color/kl_text_dim</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Kl.GradientButton" parent="Widget.Material3.Button">
+        <item name="android:minHeight">58dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="cornerRadius">18dp</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/bg_gradient_button</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Kl.TonalButton" parent="Widget.Material3.Button.TonalButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">@color/kl_surface2</item>
+        <item name="android:textColor">@color/kl_text</item>
+        <item name="iconTint">@color/kl_text</item>
+    </style>
+
+    <style name="Kl.OutlineButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/kl_stroke</item>
+        <item name="android:textColor">@color/kl_text</item>
+        <item name="iconTint">@color/kl_text</item>
+    </style>
+    <!-- v17: small action buttons in a row (Logs sheet: Copy / Share / Report): icon above the text, tight padding,
+         one line that shrinks a little instead of being cut ("Cop", "Shar", "Rep" on his OPPO at large font) -->
+    <style name="Kl.RowButton" parent="Kl.OutlineButton">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">none</item>
+        <item name="iconGravity">top</item>
+        <item name="iconPadding">2dp</item>
+        <item name="iconSize">20dp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">9sp</item>
+        <item name="autoSizeMaxTextSize">13sp</item>
+    </style>
+    <style name="Kl.RowButton.Tonal" parent="Kl.TonalButton">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">none</item>
+        <item name="iconGravity">top</item>
+        <item name="iconPadding">2dp</item>
+        <item name="iconSize">20dp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">9sp</item>
+        <item name="autoSizeMaxTextSize">13sp</item>
+    </style>
+    <!-- v11: bottom-bar buttons — one line always, equal height, text shrinks a little instead of wrapping -->
+    <style name="Kl.BarButton.Primary" parent="Kl.GradientButton">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">11sp</item>
+        <item name="autoSizeMaxTextSize">15sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <style name="Kl.BarButton.Outline" parent="Kl.OutlineButton">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">11sp</item>
+        <item name="autoSizeMaxTextSize">15sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/kl_bg">
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:clipToPadding="false" android:paddingBottom="110dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:text="Welcome to Klipora" android:textColor="@color/kl_text" android:textSize="28sp" android:textStyle="bold"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Turn long videos into 9:16 shorts with synced captions. Add two free AI keys to start." style="@style/Kl.Body" android:textSize="14sp"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="16dp">
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:padding="10dp" android:background="@drawable/bg_logs" android:text="🎯\nViral moments" android:textColor="@color/kl_text_dim" android:textSize="11sp"/>
+                <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:padding="10dp" android:background="@drawable/bg_logs" android:text="💬\nAuto captions" android:textColor="@color/kl_text_dim" android:textSize="11sp"/>
+                <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center" android:padding="10dp" android:background="@drawable/bg_logs" android:text="⚡\nBackground render" android:textColor="@color/kl_text_dim" android:textSize="11sp"/>
+            </LinearLayout>
+            
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="26dp" android:layout_height="26dp" android:gravity="center" android:background="@drawable/bg_score" android:text="1" android:textColor="@color/white" android:textStyle="bold" android:textSize="12sp"/>
+                        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:text="Gemini key" style="@style/Kl.Title" android:textSize="15sp"/>
+                        <TextView android:id="@+id/tvGeminiValidBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Required" android:textColor="@color/kl_warn" android:textSize="12sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Finds and scores the most viral moments." style="@style/Kl.Body" android:textSize="12sp"/>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="Gemini API key (AIza… or AQ.…)" app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp" app:endIconMode="password_toggle">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etGeminiKey" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:maxLines="1" android:textSize="14sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnGetGeminiKeyOnboard" style="@style/Kl.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="8dp" android:text="Get a free Gemini key" android:textSize="12sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="26dp" android:layout_height="26dp" android:gravity="center" android:background="@drawable/bg_score" android:text="2" android:textColor="@color/white" android:textStyle="bold" android:textSize="12sp"/>
+                        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:text="Groq key" style="@style/Kl.Title" android:textSize="15sp"/>
+                        <TextView android:id="@+id/tvGroqValidBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Required" android:textColor="@color/kl_warn" android:textSize="12sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Fast Whisper transcript with word timings for captions." style="@style/Kl.Body" android:textSize="12sp"/>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="Groq API key (gsk_…)" app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp" app:endIconMode="password_toggle">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etGroqKey" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:maxLines="1" android:textSize="14sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnGetGroqKeyOnboard" style="@style/Kl.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="8dp" android:text="Get a free Groq key" android:textSize="12sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView android:id="@+id/tvOnboardHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Add your Gemini and Groq keys to start" style="@style/Kl.Body"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:id="@+id/btnNext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|end" android:layout_margin="22dp" android:text="Enter studio" app:icon="@drawable/ic_v_sparkle" app:backgroundTint="@color/kl_primary" android:textColor="@color/white" app:iconTint="@color/white"/>
+</FrameLayout>

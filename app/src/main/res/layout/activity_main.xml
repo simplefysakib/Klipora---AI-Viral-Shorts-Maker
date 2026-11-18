@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/kl_bg">
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+
+        <!-- ============================== CREATE TAB ============================== -->
+        <androidx.core.widget.NestedScrollView android:id="@+id/tabCreate" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false" android:paddingBottom="24dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="18dp" android:paddingEnd="18dp" android:paddingTop="14dp">
+
+                <!-- header -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Klipora" android:textColor="@color/kl_text" android:textSize="22sp" android:textStyle="bold" android:letterSpacing="-0.01"/>
+                        <TextView android:id="@+id/tvStudioSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AI Shorts Studio" android:textColor="@color/kl_text_dim" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView android:id="@+id/badgePro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pro" android:paddingStart="10dp" android:paddingEnd="10dp" android:paddingTop="4dp" android:paddingBottom="4dp" android:text="PRO" android:textColor="@color/white" android:textSize="11sp" android:textStyle="bold" android:visibility="gone"/>
+                </LinearLayout>
+
+                <!-- ================= INPUT PANEL ================= -->
+                <LinearLayout android:id="@+id/panelInput" android:animateLayoutChanges="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="18dp">
+
+                    <!-- error card: every failure lands here with Retry + Report bug (no silent failures) -->
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardError" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" android:visibility="gone" app:cardBackgroundColor="#1FF43F5E" app:strokeColor="#66F43F5E" app:strokeWidth="1dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_info" app:tint="#FFF43F5E" android:contentDescription="@null"/>
+                                <TextView android:id="@+id/tvErrorTitle" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:text="Something went wrong" android:textColor="@color/kl_text" android:textSize="15sp" android:textStyle="bold"/>
+                                <ImageView android:id="@+id/btnErrorClose" android:layout_width="36dp" android:layout_height="36dp" android:padding="9dp" android:src="@drawable/ic_v_close" app:tint="@color/kl_text_dim" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Dismiss"/>
+                            </LinearLayout>
+                            <TextView android:id="@+id/tvErrorMsg" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="" android:textColor="@color/kl_text_dim" android:textSize="13sp" android:maxLines="8" android:ellipsize="end" android:textIsSelectable="true"/>
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+                                <com.google.android.material.button.MaterialButton android:id="@+id/btnErrorRetry" style="@style/Kl.TonalButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="50dp" android:text="Retry" android:maxLines="1" app:icon="@drawable/ic_v_refresh" android:paddingStart="8dp" android:paddingEnd="8dp" app:iconPadding="4dp" app:autoSizeTextType="uniform" app:autoSizeMinTextSize="10sp" app:autoSizeMaxTextSize="14sp"/>
+                                <Space android:layout_width="10dp" android:layout_height="1dp"/>
+                                <com.google.android.material.button.MaterialButton android:id="@+id/btnErrorReport" style="@style/Kl.OutlineButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="50dp" android:text="Report bug" android:maxLines="1" app:icon="@drawable/ic_v_mail" android:paddingStart="8dp" android:paddingEnd="8dp" app:iconPadding="4dp" app:autoSizeTextType="uniform" app:autoSizeMinTextSize="10sp" app:autoSizeMaxTextSize="14sp"/>
+                            </LinearLayout>
+                            <TextView android:id="@+id/btnErrorFix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:paddingTop="6dp" android:paddingBottom="6dp" android:text="Fix background settings" android:textColor="@color/kl_accent" android:textSize="13sp" android:textStyle="bold" android:visibility="gone" android:background="?attr/selectableItemBackground"/>
+                            <TextView android:id="@+id/btnErrorUpdate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:paddingTop="6dp" android:paddingBottom="6dp" android:text="You're on an old version — update first, this may already be fixed.  Update ›" android:textColor="@color/kl_accent" android:textSize="13sp" android:textStyle="bold" android:visibility="gone" android:background="?attr/selectableItemBackground"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_hero" android:padding="18dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Turn long videos into viral shorts" android:textColor="@color/kl_text" android:textSize="19sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="AI finds the best moments, cuts 9:16 clips and adds word-synced captions." style="@style/Kl.Body"/>
+
+
+                        <LinearLayout android:id="@+id/groupYt" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="16dp">
+                            <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilUrl" style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Paste video link" app:boxCornerRadiusTopStart="14dp" app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusBottomStart="14dp" app:boxCornerRadiusBottomEnd="14dp" app:boxStrokeColor="@color/kl_primary" app:endIconMode="custom" app:endIconDrawable="@drawable/ic_v_paste" app:endIconContentDescription="Paste" app:startIconDrawable="@drawable/ic_v_link" app:boxBackgroundColor="#0F0F18">
+                                <com.google.android.material.textfield.TextInputEditText android:id="@+id/etYtUrlHome" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textUri" android:imeOptions="actionGo" android:maxLines="1" android:textSize="14sp"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <TextView android:id="@+id/tvClipboardNotice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Link pasted from clipboard" android:textColor="@color/kl_accent" android:textSize="12sp" android:visibility="gone"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btnFetchYtHome" style="@style/Kl.TonalButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="54dp" android:layout_marginTop="10dp" android:text="Fetch video"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- loading info -->
+                    <LinearLayout android:id="@+id/layoutFetching" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:orientation="horizontal" android:gravity="center_vertical" android:visibility="gone">
+                        <com.google.android.material.progressindicator.CircularProgressIndicator android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" app:indicatorSize="22dp" app:trackThickness="2dp" app:indicatorColor="@color/kl_primary"/>
+                        <TextView android:id="@+id/tvFetching" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:text="Reading video info…" style="@style/Kl.Body"/>
+                    </LinearLayout>
+
+                    <!-- video card -->
+                    <com.google.android.material.card.MaterialCardView android:id="@+id/layoutVideoInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:visibility="gone">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                            <FrameLayout android:layout_width="128dp" android:layout_height="72dp">
+                                <com.google.android.material.imageview.ShapeableImageView android:id="@+id/ivVideoThumb" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/kl_surface2" app:shapeAppearanceOverlay="@style/Kl.Round12"/>
+                                <TextView android:id="@+id/tvVideoDuration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|end" android:layout_margin="4dp" android:background="@drawable/bg_badge" android:paddingStart="5dp" android:paddingEnd="5dp" android:paddingTop="1dp" android:paddingBottom="1dp" android:text="00:00" android:textColor="@color/white" android:textSize="10sp"/>
+                            </FrameLayout>
+                            <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
+                                <TextView android:id="@+id/tvSourceKind" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VIDEO LINK" style="@style/Kl.Label" android:textSize="10sp"/>
+                                <TextView android:id="@+id/tvVideoTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:maxLines="2" android:ellipsize="end" android:text="Video title" android:textColor="@color/kl_text" android:textSize="14sp" android:textStyle="bold"/>
+                            </LinearLayout>
+                            <ImageView android:id="@+id/btnClearSource" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:src="@drawable/ic_v_close" app:tint="@color/kl_text_dim" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Remove video"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- configure -->
+                    <LinearLayout android:id="@+id/cardControls" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                                <!-- code 28: audio language picker, shown only when the video has more than one audio track -->
+                                <LinearLayout android:id="@+id/groupAudioLang" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="14dp" android:visibility="gone">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Audio language" style="@style/Kl.Label"/>
+                                    <TextView android:id="@+id/tvAudioLangHint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="This video has more than one audio language" style="@style/Kl.Body" android:textSize="11sp"/>
+                                    <HorizontalScrollView android:id="@+id/scrollAudioLang" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:scrollbars="none" android:fadingEdgeLength="24dp" android:requiresFadingEdge="horizontal">
+                                        <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupAudioLang" android:layout_width="wrap_content" android:layout_height="wrap_content" app:singleLine="true" app:singleSelection="true" app:selectionRequired="true" app:chipSpacingHorizontal="6dp"/>
+                                    </HorizontalScrollView>
+                                </LinearLayout>
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Number of shorts" style="@style/Kl.Label"/>
+                                <TextView android:id="@+id/tvCountHint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 free • 2–5 unlock with an ad or PRO" style="@style/Kl.Body" android:textSize="11sp"/>
+                                    <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupShortsCount" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true" app:selectionRequired="true" app:singleLine="false" app:chipSpacingHorizontal="6dp" app:checkedChip="@+id/chipCount1">
+                                        <com.google.android.material.chip.Chip android:id="@+id/chipCount1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1"/>
+                                        <com.google.android.material.chip.Chip android:id="@+id/chipCount2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" app:chipIcon="@drawable/ic_v_lock" app:chipIconSize="14dp" app:chipIconTint="@color/kl_warn"/>
+                                        <com.google.android.material.chip.Chip android:id="@+id/chipCount3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" app:chipIcon="@drawable/ic_v_lock" app:chipIconSize="14dp" app:chipIconTint="@color/kl_warn"/>
+                                        <com.google.android.material.chip.Chip android:id="@+id/chipCount4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4" app:chipIcon="@drawable/ic_v_lock" app:chipIconSize="14dp" app:chipIconTint="@color/kl_warn"/>
+                                        <com.google.android.material.chip.Chip android:id="@+id/chipCount5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" app:chipIcon="@drawable/ic_v_lock" app:chipIconSize="14dp" app:chipIconTint="@color/kl_warn"/>
+                                        <com.google.android.material.chip.Chip android:id="@+id/chipCountAuto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Auto" android:visibility="gone" app:chipIcon="@drawable/ic_v_lock" app:chipIconSize="14dp" app:chipIconTint="@color/kl_warn"/>
+                                    </com.google.android.material.chip.ChipGroup>
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Genre" style="@style/Kl.Label"/>
+                                <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupCategory" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true" app:selectionRequired="true" app:checkedChip="@+id/chipOther">
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipOther" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Auto-detect"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipPodcast" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎙 Podcast"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipMovies" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎬 Movies"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipGaming" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎮 Gaming"/>
+                                </com.google.android.material.chip.ChipGroup>
+
+                                <!-- v14: output format -->
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Format" style="@style/Kl.Label"/>
+                                <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupAspect" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true" app:selectionRequired="true" app:checkedChip="@+id/chipAspect916">
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipAspect916" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9:16 Shorts"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipAspect11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1:1 Square"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipAspect169" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="16:9 Wide"/>
+                                </com.google.android.material.chip.ChipGroup>
+                                <TextView android:id="@+id/tvFrameLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="9:16 framing" style="@style/Kl.Label"/>
+                                <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupFrame" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true" app:selectionRequired="true" app:checkedChip="@+id/chipFrameBlur">
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipFrameBlur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Blur background"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipFrameFill" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fill (crop)"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipFrameFit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fit (black bars)"/>
+                                </com.google.android.material.chip.ChipGroup>
+                                <!-- v13: AI face tracking -->
+                                <LinearLayout android:id="@+id/rowFaceTrack" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" android:gravity="center_vertical" android:minHeight="50dp" android:background="?attr/selectableItemBackground">
+                                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_face_track" app:tint="@color/kl_accent" android:importantForAccessibility="no"/>
+                                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="10dp" android:layout_marginEnd="8dp">
+                                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AI face tracking" style="@style/Kl.Title" android:textSize="15sp"/>
+                                            <ImageView android:id="@+id/ivFaceLock" android:layout_width="16dp" android:layout_height="16dp" android:layout_marginStart="6dp" android:src="@drawable/ic_v_lock" app:tint="@color/kl_warn" android:contentDescription="Premium"/>
+                                        </LinearLayout>
+                                        <TextView android:id="@+id/tvFaceTrackSummary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Camera follows the speaker in wide videos" style="@style/Kl.Body" android:textSize="12sp"/>
+                                    </LinearLayout>
+                                    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchFaceTrack" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:contentDescription="AI face tracking"/>
+                                </LinearLayout>
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Export quality" style="@style/Kl.Label"/>
+                                <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupExport" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true" app:selectionRequired="true" app:checkedChip="@+id/chipExp720">
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipExp720" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="720p • fast"/>
+                                    <com.google.android.material.chip.Chip android:id="@+id/chipExp1080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1080p HD" app:chipIcon="@drawable/ic_v_lock" app:chipIconSize="14dp" app:chipIconTint="@color/kl_warn"/>
+                                </com.google.android.material.chip.ChipGroup>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- captions card -->
+                        <com.google.android.material.card.MaterialCardView android:id="@+id/cardCaptions" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_v_cc" app:tint="@color/kl_accent"/>
+                                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="10dp">
+                                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Auto captions" style="@style/Kl.Title" android:textSize="15sp"/>
+                                        <TextView android:id="@+id/tvCaptionSummary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hormozi • word-by-word" style="@style/Kl.Body" android:textSize="12sp"/>
+                                    </LinearLayout>
+                                    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchCaptions" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true"/>
+                                </LinearLayout>
+                                <com.google.android.material.button.MaterialButton android:id="@+id/btnCapLang" style="@style/Kl.OutlineButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="8dp" android:text="Hinglish" android:textAllCaps="false"/>
+                                <com.google.android.material.button.MaterialButton android:id="@+id/btnCaptionStyle" style="@style/Kl.OutlineButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="10dp" android:text="Caption style" app:icon="@drawable/ic_v_cc"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnProcessRange" style="@style/Kl.GradientButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Generate shorts" app:icon="@drawable/ic_v_sparkle" app:iconGravity="textStart" app:iconTint="@color/white"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:gravity="center" android:text="Runs in the background — you can lock your phone" style="@style/Kl.Body" android:textSize="11sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- ================= PROCESSING PANEL (v3: real progress) ================= -->
+                <LinearLayout android:id="@+id/logsPanel" android:animateLayoutChanges="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="18dp" android:visibility="gone">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                            <TextView android:id="@+id/tvProcKicker" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CREATING YOUR SHORTS" android:textColor="@color/kl_primary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.08"/>
+                            <TextView android:id="@+id/tvProcTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:maxLines="2" android:ellipsize="end" android:text="Creating your shorts" style="@style/Kl.Title" android:textSize="17sp"/>
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:orientation="horizontal" android:gravity="bottom" android:baselineAligned="false">
+                                <TextView android:id="@+id/tvProgressPercent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0%" android:textColor="@color/kl_text" android:textSize="36sp" android:textStyle="bold" android:fontFeatureSettings="tnum"/>
+                                <TextView android:id="@+id/tvEta" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:layout_marginBottom="8dp" android:gravity="end" android:maxLines="2" android:text="Estimating time…" android:textColor="@color/kl_text_dim" android:textSize="13sp"/>
+                            </LinearLayout>
+                            <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progressMain" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:max="1000" app:trackThickness="10dp" app:trackCornerRadius="5dp" app:indicatorColor="@color/kl_primary" app:trackColor="@color/kl_surface2"/>
+                            <TextView android:id="@+id/tvStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Starting…" android:textColor="@color/kl_text" android:textSize="15sp" android:textStyle="bold"/>
+                            <TextView android:id="@+id/tvLoadingTip" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="" android:textColor="@color/kl_text_dim" android:textSize="13sp" android:fontFeatureSettings="tnum"/>
+                            <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="14dp" android:layout_marginBottom="6dp" android:background="@color/kl_stroke"/>
+                            <LinearLayout android:id="@+id/step0" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="8dp" android:paddingBottom="8dp">
+                                <FrameLayout android:layout_width="26dp" android:layout_height="26dp">
+                                    <com.viral.shortsmaker.StepRingView android:id="@+id/stepDot0" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                                    <ImageView android:id="@+id/stepIcon0" android:layout_width="14dp" android:layout_height="14dp" android:layout_gravity="center" android:src="@drawable/ic_v_check" android:visibility="invisible" app:tint="@color/white" android:contentDescription="@null"/>
+                                </FrameLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
+                                    <TextView android:id="@+id/stepText0" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Get audio" android:textColor="@color/kl_text_faint" android:textSize="14sp"/>
+                                </LinearLayout>
+                                <TextView android:id="@+id/stepMeta0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:minWidth="44dp" android:gravity="end" android:text="" android:textColor="@color/kl_text_faint" android:textSize="12sp" android:fontFeatureSettings="tnum"/>
+                            </LinearLayout>
+                            <LinearLayout android:id="@+id/step1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="8dp" android:paddingBottom="8dp">
+                                <FrameLayout android:layout_width="26dp" android:layout_height="26dp">
+                                    <com.viral.shortsmaker.StepRingView android:id="@+id/stepDot1" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                                    <ImageView android:id="@+id/stepIcon1" android:layout_width="14dp" android:layout_height="14dp" android:layout_gravity="center" android:src="@drawable/ic_v_check" android:visibility="invisible" app:tint="@color/white" android:contentDescription="@null"/>
+                                </FrameLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
+                                    <TextView android:id="@+id/stepText1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Transcribe speech" android:textColor="@color/kl_text_faint" android:textSize="14sp"/>
+                                </LinearLayout>
+                                <TextView android:id="@+id/stepMeta1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:minWidth="44dp" android:gravity="end" android:text="" android:textColor="@color/kl_text_faint" android:textSize="12sp" android:fontFeatureSettings="tnum"/>
+                            </LinearLayout>
+                            <LinearLayout android:id="@+id/step2" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="8dp" android:paddingBottom="8dp">
+                                <FrameLayout android:layout_width="26dp" android:layout_height="26dp">
+                                    <com.viral.shortsmaker.StepRingView android:id="@+id/stepDot2" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                                    <ImageView android:id="@+id/stepIcon2" android:layout_width="14dp" android:layout_height="14dp" android:layout_gravity="center" android:src="@drawable/ic_v_check" android:visibility="invisible" app:tint="@color/white" android:contentDescription="@null"/>
+                                </FrameLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
+                                    <TextView android:id="@+id/stepText2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Find viral moments" android:textColor="@color/kl_text_faint" android:textSize="14sp"/>
+                                </LinearLayout>
+                                <TextView android:id="@+id/stepMeta2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:minWidth="44dp" android:gravity="end" android:text="" android:textColor="@color/kl_text_faint" android:textSize="12sp" android:fontFeatureSettings="tnum"/>
+                            </LinearLayout>
+                            <LinearLayout android:id="@+id/step3" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="8dp" android:paddingBottom="8dp">
+                                <FrameLayout android:layout_width="26dp" android:layout_height="26dp">
+                                    <com.viral.shortsmaker.StepRingView android:id="@+id/stepDot3" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                                    <ImageView android:id="@+id/stepIcon3" android:layout_width="14dp" android:layout_height="14dp" android:layout_gravity="center" android:src="@drawable/ic_v_check" android:visibility="invisible" app:tint="@color/white" android:contentDescription="@null"/>
+                                </FrameLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
+                                    <TextView android:id="@+id/stepText3" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Render shorts" android:textColor="@color/kl_text_faint" android:textSize="14sp"/>
+                                </LinearLayout>
+                                <TextView android:id="@+id/stepMeta3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:minWidth="44dp" android:gravity="end" android:text="" android:textColor="@color/kl_text_faint" android:textSize="12sp" android:fontFeatureSettings="tnum"/>
+                            </LinearLayout>
+                            <LinearLayout android:id="@+id/step4" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="8dp" android:paddingBottom="8dp">
+                                <FrameLayout android:layout_width="26dp" android:layout_height="26dp">
+                                    <com.viral.shortsmaker.StepRingView android:id="@+id/stepDot4" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                                    <ImageView android:id="@+id/stepIcon4" android:layout_width="14dp" android:layout_height="14dp" android:layout_gravity="center" android:src="@drawable/ic_v_check" android:visibility="invisible" app:tint="@color/white" android:contentDescription="@null"/>
+                                </FrameLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
+                                    <TextView android:id="@+id/stepText4" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Captions" android:textColor="@color/kl_text_faint" android:textSize="14sp"/>
+                                </LinearLayout>
+                                <TextView android:id="@+id/stepMeta4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:minWidth="44dp" android:gravity="end" android:text="" android:textColor="@color/kl_text_faint" android:textSize="12sp" android:fontFeatureSettings="tnum"/>
+                            </LinearLayout>
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:gravity="center" android:text="You can leave the app or lock your phone. Progress shows in notifications." style="@style/Kl.Body" android:textSize="11sp"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btnCancel" style="@style/Kl.OutlineButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="12dp" android:text="Cancel"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ================= RESULTS PANEL ================= -->
+                <LinearLayout android:id="@+id/panelEnhance" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="18dp" android:visibility="gone">
+                    <TextView android:id="@+id/tvResultsTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Your shorts are ready" style="@style/Kl.Title" android:textSize="20sp"/>
+                    <TextView android:id="@+id/tvResultsSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:maxLines="1" android:ellipsize="end" android:text="" style="@style/Kl.Body"/>
+                    <TextView android:id="@+id/tvResultsWarn" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:padding="10dp" android:background="@drawable/bg_logs" android:text="" android:textColor="#FFF59E0B" android:textSize="12sp" android:visibility="gone"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnCaptionAll" style="@style/Kl.TonalButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="50dp" android:paddingStart="10dp" android:paddingEnd="10dp" android:maxLines="1" android:ellipsize="end" app:autoSizeTextType="uniform" app:autoSizeMinTextSize="10sp" app:autoSizeMaxTextSize="14sp" app:iconPadding="6dp" android:text="Captions" app:icon="@drawable/ic_v_cc"/>
+                        <Space android:layout_width="10dp" android:layout_height="1dp"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnSaveAll" style="@style/Kl.TonalButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="50dp" android:paddingStart="10dp" android:paddingEnd="10dp" android:maxLines="1" android:ellipsize="end" app:autoSizeTextType="uniform" app:autoSizeMinTextSize="10sp" app:autoSizeMaxTextSize="14sp" app:iconPadding="6dp" android:text="Save all" app:icon="@drawable/ic_v_save"/>
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvClips" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:nestedScrollingEnabled="false"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnNewProject" style="@style/Kl.OutlineButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="6dp" android:text="New project" app:icon="@drawable/ic_v_sparkle"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- ============================== SETTINGS TAB ============================== -->
+        <include android:id="@+id/tabHistory" layout="@layout/tab_history" android:visibility="gone"/>
+        <include android:id="@+id/tabSettings" layout="@layout/tab_settings" android:visibility="gone"/>
+    </FrameLayout>
+
+    <FrameLayout android:id="@+id/adBannerBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:background="@color/kl_surface" android:visibility="gone"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/kl_surface" app:menu="@menu/bottom_nav" app:itemIconTint="@color/nav_item" app:itemTextColor="@color/nav_item" app:itemActiveIndicatorStyle="@style/Kl.NavIndicator" app:labelVisibilityMode="labeled"/>
+</LinearLayout>

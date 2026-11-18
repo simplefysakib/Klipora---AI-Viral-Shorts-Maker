@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- code 33: Premium only (the Free build has no backup engine setting at all) -->
+<resources>
+    <string name="backup_engine_test">Use backup video engine (test)</string>
+    <string name="backup_engine_test_sub">Makes shorts with the phone\'s own decoder, GPU and encoder instead of FFmpeg. For testing.</string>
+</resources>

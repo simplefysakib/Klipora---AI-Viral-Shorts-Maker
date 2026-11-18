@@ -1,0 +1,7 @@
+[
+  {"clip": 0, "end_phrase": 15, "complete": true, "reason": "Finishes the technical process description"},
+  {"clip": 1, "end_phrase": 8, "complete": true, "reason": "Wraps up the segfault trick succinctly"},
+  {"clip": 2, "end_phrase": 22, "complete": true, "reason": "States the single change required"},
+  {"clip": 3, "end_phrase": 8, "complete": true, "reason": "Concludes the comparison point cleanly"},
+  {"clip": 4, "end_phrase": 4, "complete": true, "reason": "Neat personal wrap-up line"}
+]

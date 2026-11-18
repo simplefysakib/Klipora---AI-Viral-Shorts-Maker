@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/kl_bg">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical"
+        android:paddingStart="18dp" android:paddingEnd="10dp" android:paddingTop="14dp" android:paddingBottom="6dp">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="History" style="@style/Kl.Title" android:textSize="22sp"/>
+            <TextView android:id="@+id/tvHistorySub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Your past projects" style="@style/Kl.Body" android:textSize="12sp"/>
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnHistorySort" style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50dp" android:maxLines="1" android:text="Newest" android:textColor="@color/kl_text_dim" app:icon="@drawable/ic_v_refresh" app:iconTint="@color/kl_text_dim" app:iconSize="16dp"/>
+    </LinearLayout>
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvHistory" android:layoutAnimation="@anim/kl_layout_fall" android:layout_width="match_parent" android:layout_height="match_parent"
+            android:clipToPadding="false" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="6dp" android:paddingBottom="24dp"/>
+
+        <LinearLayout android:id="@+id/historyEmpty" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="center"
+            android:orientation="vertical" android:gravity="center_horizontal" android:padding="32dp" android:visibility="gone">
+            <ImageView android:layout_width="72dp" android:layout_height="72dp" android:padding="18dp" android:background="@drawable/bg_badge" android:src="@drawable/ic_v_play" app:tint="@color/kl_primary" android:contentDescription="@null"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="No shorts yet" style="@style/Kl.Title" android:textSize="18sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:gravity="center" android:text="Every project you create shows up here, so you can watch, re-caption, save or share it any time." style="@style/Kl.Body"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnHistoryCreate" style="@style/Kl.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50dp" android:layout_marginTop="18dp" android:text="Create your first short" app:icon="@drawable/ic_v_sparkle"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

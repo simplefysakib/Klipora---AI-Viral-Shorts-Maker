@@ -1,0 +1,7 @@
+[
+  {"clip": 0, "end_phrase": 11, "complete": true, "reason": "Clear reveal/mini conclusion"},
+  {"clip": 1, "end_phrase": 21, "complete": true, "reason": "Explains why consumption rose"},
+  {"clip": 2, "end_phrase": 17, "complete": true, "reason": "Completes the habit-transfer point"},
+  {"clip": 3, "end_phrase": 27, "complete": true, "reason": "Punchline: audio is scarier than video"},
+  {"clip": 4, "end_phrase": 14, "complete": true, "reason": "Wraps up key idea about audio"}
+]

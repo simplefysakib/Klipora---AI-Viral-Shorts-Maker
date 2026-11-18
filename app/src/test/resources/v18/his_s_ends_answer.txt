@@ -1,0 +1,7 @@
+[
+  {"clip": 0, "end_phrase": 12, "complete": true, "reason": "thought complete, conversation moves on"},
+  {"clip": 1, "end_phrase": 21, "complete": true, "reason": "recordings payoff completed"},
+  {"clip": 2, "end_phrase": 15, "complete": true, "reason": "resistance point finishes cleanly"},
+  {"clip": 3, "end_phrase": 31, "complete": true, "reason": "covers Delhi theatre — point closed"},
+  {"clip": 4, "end_phrase": 17, "complete": true, "reason": "wraps up statement about seriousness"}
+]

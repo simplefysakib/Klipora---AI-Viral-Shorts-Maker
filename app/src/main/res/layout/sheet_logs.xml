@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:paddingStart="18dp" android:paddingEnd="18dp" android:paddingTop="8dp" android:paddingBottom="18dp" android:background="@color/kl_surface">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Logs" style="@style/Kl.Title" android:textSize="18sp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Technical details of the last job. Attach them when you report a bug." style="@style/Kl.Body" android:textSize="12sp"/>
+    <ScrollView android:id="@+id/scrollSheetLogs" android:layout_width="match_parent" android:layout_height="320dp" android:layout_marginTop="12dp" android:background="@drawable/bg_logs" android:padding="10dp">
+        <TextView android:id="@+id/tvSheetLogs" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/kl_text_dim" android:textSize="11sp" android:fontFamily="monospace" android:textIsSelectable="true"/>
+    </ScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogsCopy" style="@style/Kl.RowButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Copy" android:maxLines="1" app:icon="@drawable/ic_v_copy"/>
+        <Space android:layout_width="8dp" android:layout_height="1dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogsShare" style="@style/Kl.RowButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Share" android:maxLines="1" app:icon="@drawable/ic_v_share"/>
+        <Space android:layout_width="8dp" android:layout_height="1dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogsReport" style="@style/Kl.RowButton.Tonal" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Report" android:maxLines="1" app:icon="@drawable/ic_v_mail"/>
+    </LinearLayout>
+</LinearLayout>

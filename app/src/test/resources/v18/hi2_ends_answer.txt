@@ -1,0 +1,7 @@
+[
+  {"clip": 0, "end_phrase": 9, "complete": true, "reason": "Sentence completes the assistant role"},
+  {"clip": 1, "end_phrase": 8, "complete": true, "reason": "Thought about enjoying songs finishes"},
+  {"clip": 2, "end_phrase": 3, "complete": true, "reason": "Finishes point about working on theatre"},
+  {"clip": 3, "end_phrase": 2, "complete": false, "reason": "Sentence is incomplete; topic continues"},
+  {"clip": 4, "end_phrase": 2, "complete": true, "reason": "Completes the anecdote about the play"}
+]

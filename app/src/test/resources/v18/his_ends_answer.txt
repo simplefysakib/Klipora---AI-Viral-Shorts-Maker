@@ -1,0 +1,7 @@
+[
+  {"clip": 0, "end_phrase": 3, "complete": true, "reason": "Natural sentence and mini-conclusion"},
+  {"clip": 1, "end_phrase": 15, "complete": true, "reason": "Speaker wraps up and moves on"},
+  {"clip": 2, "end_phrase": 6, "complete": true, "reason": "Clear complete sentence, conversation pause"},
+  {"clip": 3, "end_phrase": 3, "complete": true, "reason": "Finished thought about serious theatre"},
+  {"clip": 4, "end_phrase": 6, "complete": true, "reason": "Complete statement about theatre coverage"}
+]

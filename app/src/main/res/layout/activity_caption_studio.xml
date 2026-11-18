@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/studioRoot" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/kl_bg">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="12dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+        <ImageView android:id="@+id/btnBack" android:layout_width="44dp" android:layout_height="44dp" android:padding="10dp" android:src="@drawable/ic_v_back" app:tint="@color/kl_text" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Back"/>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="4dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Caption Studio" android:singleLine="true" android:ellipsize="end" style="@style/Kl.Title"/>
+            <TextView android:id="@+id/tvStudioFor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Default style for new shorts" android:maxLines="1" android:ellipsize="end" style="@style/Kl.Body" android:textSize="12sp"/>
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnRemove" style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Remove" android:maxLines="1" android:textColor="@color/kl_error" android:visibility="gone"/>
+    </LinearLayout>
+
+    <com.viral.shortsmaker.captions.CaptionPreviewView android:id="@+id/preview" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:minHeight="260dp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:paddingTop="4dp" android:paddingBottom="4dp" android:text="Drag to move  •  corner handle to resize  •  double-tap to reset" android:textColor="@color/kl_text_faint" android:textSize="11sp"/>
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="0.95" android:background="@color/kl_surface">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Caption language" style="@style/Kl.Label"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnScriptPick" style="@style/Kl.OutlineButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="6dp" android:text="Hinglish" android:textAllCaps="false"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Style" style="@style/Kl.Label"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvStyles" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:clipToPadding="false"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Position" style="@style/Kl.Label"/>
+            <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupPos" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" app:singleSelection="true">
+                <com.google.android.material.chip.Chip android:id="@+id/chipPosTop" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Top"/>
+                <com.google.android.material.chip.Chip android:id="@+id/chipPosMid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Middle"/>
+                <com.google.android.material.chip.Chip android:id="@+id/chipPosLow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lower third"/>
+                <com.google.android.material.chip.Chip android:id="@+id/chipPosBottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bottom"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Font" style="@style/Kl.Label"/>
+            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none" android:layout_marginTop="6dp">
+                <com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupFont" android:layout_width="wrap_content" android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true" app:singleLine="true"/>
+            </HorizontalScrollView>
+
+            <!-- v12: premium size / words-per-line / lines card -->
+            <LinearLayout android:id="@+id/cardSize" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="vertical" android:background="@drawable/bg_studio_card" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="14dp" android:paddingBottom="14dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:id="@+id/tvSizeLabel" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Size" android:maxLines="1" android:ellipsize="end" android:textColor="@color/kl_text" android:textSize="14sp" android:textStyle="bold"/>
+                    <TextView android:id="@+id/tvSizeValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="56dp" android:gravity="center" android:background="@drawable/bg_value_pill" android:paddingStart="10dp" android:paddingEnd="10dp" android:paddingTop="3dp" android:paddingBottom="3dp" android:text="100%" android:maxLines="1" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" android:fontFeatureSettings="tnum"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A" android:textColor="@color/kl_text_dim" android:textSize="12sp" android:textStyle="bold"/>
+                    <com.viral.shortsmaker.PremiumSlider android:id="@+id/sliderSize" android:layout_width="0dp" android:layout_weight="1" android:layout_height="40dp" android:contentDescription="Caption size"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A" android:textColor="@color/kl_text_dim" android:textSize="18sp" android:textStyle="bold"/>
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="10dp" android:layout_marginBottom="12dp" android:background="#14FFFFFF"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:id="@+id/tvWordsLabel" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Words per line" android:maxLines="1" android:ellipsize="end" android:textColor="@color/kl_text" android:textSize="14sp" android:textStyle="bold"/>
+                    <TextView android:id="@+id/tvWordsValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="56dp" android:gravity="center" android:background="@drawable/bg_value_pill" android:paddingStart="10dp" android:paddingEnd="10dp" android:paddingTop="3dp" android:paddingBottom="3dp" android:text="3" android:maxLines="1" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="10dp" android:gravity="center" android:text="1" android:textColor="@color/kl_text_dim" android:textSize="12sp" android:textStyle="bold"/>
+                    <com.viral.shortsmaker.PremiumSlider android:id="@+id/sliderWords" android:layout_width="0dp" android:layout_weight="1" android:layout_height="40dp" android:contentDescription="Words per line"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="12dp" android:gravity="center" android:text="8" android:textColor="@color/kl_text_dim" android:textSize="12sp" android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="10dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Lines" android:maxLines="1" android:ellipsize="end" android:textColor="@color/kl_text" android:textSize="14sp" android:textStyle="bold"/>
+                    <LinearLayout android:id="@+id/segLines" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:background="@drawable/bg_segment_track" android:padding="3dp">
+                        <TextView android:id="@+id/segLines1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="34dp" android:minWidth="76dp" android:gravity="center" android:paddingStart="12dp" android:paddingEnd="12dp" android:background="@drawable/bg_segment_item" android:text="1 line" android:maxLines="1" android:textColor="@color/segment_text" android:textSize="13sp" android:textStyle="bold" android:clickable="true" android:focusable="true"/>
+                        <TextView android:id="@+id/segLines2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="34dp" android:minWidth="76dp" android:gravity="center" android:paddingStart="12dp" android:paddingEnd="12dp" android:background="@drawable/bg_segment_item" android:text="2 lines" android:maxLines="1" android:textColor="@color/segment_text" android:textSize="13sp" android:textStyle="bold" android:clickable="true" android:focusable="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Text colour" style="@style/Kl.Label"/>
+            <LinearLayout android:id="@+id/rowTextColors" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Spoken word colour" style="@style/Kl.Label"/>
+            <LinearLayout android:id="@+id/rowHlColors" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Extras" style="@style/Kl.Label"/>
+            <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchUpper" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:minHeight="50dp" android:text="ALL CAPS" android:textColor="@color/kl_text"/>
+            <TextView android:id="@+id/tvCapsHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="-6dp" android:paddingEnd="64dp" android:text="Capital letters for English and Hinglish. Hindi script stays the same." android:textColor="@color/kl_text_faint" android:textSize="12sp"/>
+            <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchKeywords" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:text="Highlight key words" android:textColor="@color/kl_text"/>
+            <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchProgress" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="50dp" android:text="Progress bar" android:textColor="@color/kl_text"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout android:id="@+id/bottomBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="10dp" android:paddingBottom="12dp" android:background="@color/kl_surface">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnSecondary" style="@style/Kl.BarButton.Outline" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Apply to all"/>
+        <Space android:id="@+id/spaceBtns" android:layout_width="12dp" android:layout_height="1dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPrimary" style="@style/Kl.BarButton.Primary" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="52dp" android:text="Apply"/>
+    </LinearLayout>
+</LinearLayout>

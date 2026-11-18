@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
+    <!-- v21 (4.0): Android 11+ package visibility. Without these the ad SDK cannot see the Play Store / phone's app
+         store (it reports "no store" to the ad server) and can't check that an ad's Install / web link has an app to
+         open it. Unity Ads 4.21 declares the store packages itself; the link intents are Klipora's own. -->
+    <queries>
+        <package android:name="com.android.vending" />
+        <package android:name="com.oppo.market" />
+        <package android:name="com.heytap.market" />
+        <package android:name="com.xiaomi.market" />
+        <package android:name="com.sec.android.app.samsungapps" />
+        <package android:name="com.bbk.appstore" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="market" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".KliporaApp"
+        android:allowBackup="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Klipora"
+        android:requestLegacyExternalStorage="true"
+        android:largeHeap="true"
+        android:extractNativeLibs="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Klipora"
+        tools:targetApi="34">
+        <!-- v16: lets the face model use the GPU's OpenCL driver where the phone has one (optional) -->
+        <uses-native-library android:name="libOpenCL.so" android:required="false" />
+        <uses-native-library android:name="libOpenCL-car.so" android:required="false" />
+        <uses-native-library android:name="libOpenCL-pixel.so" android:required="false" />
+
+        <activity
+            android:name=".OnboardingActivity"
+            android:label="Klipora"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="Klipora"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter android:label="Make shorts with Klipora">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".CaptionStudioActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name=".PlayerActivity" android:exported="false" android:theme="@style/Theme.Klipora.Player" android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <service
+            android:name=".core.ProcessingService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- code 31 (4.9): FFmpeg's video work in its own process: a native crash in the phone's video codec ends only
+             this process, the job renders the short again on a safer path. Bound (never started) by the job. -->
+        <service
+            android:name=".core.RenderService"
+            android:exported="false"
+            android:process=":render" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>

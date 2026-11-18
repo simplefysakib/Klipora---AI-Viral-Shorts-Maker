@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:paddingStart="24dp" android:paddingEnd="24dp" android:paddingTop="6dp">
+    <TextView android:id="@+id/tvLegalBody" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Use Klipora only with videos you own or have permission to use. You are responsible for the content you create and share. Klipora is not affiliated with YouTube or Google."
+        android:textColor="@color/kl_text" android:textSize="14sp" android:lineSpacingMultiplier="1.2"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+        android:layout_marginTop="14dp" android:gravity="center_vertical">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLegalPrivacy"
+            style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:minHeight="40dp" android:paddingStart="0dp" android:paddingEnd="8dp" android:text="Privacy Policy"
+            android:textColor="@color/kl_accent" android:textSize="13sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="·"
+            android:textColor="@color/kl_text_faint" android:textSize="14sp" android:paddingStart="4dp" android:paddingEnd="4dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLegalTerms"
+            style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:minHeight="40dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:text="Terms of Use"
+            android:textColor="@color/kl_accent" android:textSize="13sp"/>
+    </LinearLayout>
+</LinearLayout>

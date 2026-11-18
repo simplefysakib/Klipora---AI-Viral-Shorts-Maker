@@ -1,0 +1,164 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.viral.shortsmaker'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.viral.shortsmaker"
+        minSdk 24
+        targetSdk 34
+        versionCode 47
+        versionName "5.9.1"
+
+    }
+
+    // Premium edition (Sakib, Oct 31): same app, same package, same versionCode/versionName and same keystore, so it
+    // installs over the normal build as a replacement. "free" is the normal app (rewarded-ad unlocks), unchanged;
+    // "premium" has every PRO feature permanently unlocked and shows no ads (Unity Ads is never initialised).
+    flavorDimensions 'edition'
+    productFlavors {
+        free {
+            dimension 'edition'
+            buildConfigField 'boolean', 'PREMIUM', 'false'
+            // code 33: the backup video engine test switch exists only in Premium
+            buildConfigField 'boolean', 'BACKUP_ENGINE_SWITCH', 'false'
+        }
+        premium {
+            dimension 'edition'
+            buildConfigField 'boolean', 'PREMIUM', 'true'
+            buildConfigField 'boolean', 'BACKUP_ENGINE_SWITCH', 'true'
+        }
+    }
+
+    // Per-ABI APKs keep the download small (FFmpeg + yt-dlp native libs are large); universal kept too.
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'arm64-v8a', 'armeabi-v7a'
+            universalApk true
+        }
+    }
+    // App Bundles must not receive multiple shrunk APK split artifacts.
+    // Keep ABI splits for APK builds, but emit one Play-compatible bundle.
+    if (gradle.startParameter.taskNames.any { it.toLowerCase().contains('bundle') }) {
+        splits.abi.enable = false
+    }
+
+    // PNG crunching off (big logo used to time out AAPT2 on-device)
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    signingConfigs {
+        release {
+            // Same keystore as v1.x so this update installs over the existing app.
+            def ksFile = file("klipora_release.jks")
+            if (ksFile.exists() && ksFile.length() > 0) {
+                storeFile ksFile
+                storePassword "klipora123"
+                keyAlias "klipora_key"
+                keyPassword "klipora123"
+                v1SigningEnabled true
+                v2SigningEnabled true
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release.storeFile != null ? signingConfigs.release : signingConfigs.debug
+            // v10 security: R8 shrink + obfuscation, unused resources removed, never debuggable
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            all {
+                // v12: Robolectric's Android 16 (API 36) sandbox needs Java 21; pass -PtestJava=/path/to/jdk21/bin/java
+                if (project.findProperty('testJava')) executable = project.findProperty('testJava')
+                else exclude '**/V12Android16Test*'
+                systemProperty 'shotDir', project.findProperty('shotDir') ?: "${project.buildDir}/shots"
+                systemProperty 'harnessDir', project.findProperty('harnessDir') ?: ''
+                systemProperty 'harnessMode', project.findProperty('harnessMode') ?: ''
+                systemProperty 'v9Dir', project.findProperty('v9Dir') ?: ''
+                systemProperty 'v9Mode', project.findProperty('v9Mode') ?: ''
+                systemProperty 'v17Before', project.findProperty('v17Before') ?: 'false'
+                systemProperty 'h18Dirs', project.findProperty('h18Dirs') ?: ''
+                systemProperty 'h18Mode', project.findProperty('h18Mode') ?: ''
+                systemProperty 'h18Out', project.findProperty('h18Out') ?: 'picked.json'
+                systemProperty 'v14Dir', project.findProperty('v14Dir') ?: ''
+                systemProperty 'v23Src', project.findProperty('v23Src') ?: ''
+                systemProperty 'v24Webm', project.findProperty('v24Webm') ?: ''
+                systemProperty 'v24Samples', project.findProperty('v24Samples') ?: ''
+                systemProperty 'v24Meta', project.findProperty('v24Meta') ?: '640,360,12,2160'
+                systemProperty 'v24Out', project.findProperty('v24Out') ?: '/tmp/v24_cut.webm'
+                systemProperty 'fontsDir', project.findProperty('fontsDir') ?: "${project.projectDir}/src/main/assets/fonts"
+                maxHeapSize = '3g'
+                // code 27: a fresh test JVM every 6 classes (Robolectric sandboxes piled up past 3 GB in one JVM)
+                forkEvery = 6
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+        jniLibs {
+            useLegacyPackaging true
+            pickFirsts += ['lib/arm64-v8a/libc++_shared.so', 'lib/armeabi-v7a/libc++_shared.so']   // v12: x86 copies were slipping into the universal APK
+            excludes += ['lib/x86/**', 'lib/x86_64/**']
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.activity:activity:1.9.3'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.unity3d.ads:unity-ads:4.21.0'   // v21: newest (Oct 1 2026): store visibility on Android 11+, Install-click fallback
+
+    // FFmpegKit full-gpl (maintained fork of the retired arthenica build): libass + freetype + harfbuzz + fribidi
+    // + fontconfig for captions, libx264, libopus. 16 KB page aligned.
+    implementation 'com.antonkarpenko:ffmpeg-kit-full-gpl:2.2.3'
+    implementation 'io.github.junkfood02.youtubedl-android:library:0.18.1'
+    // v13 AI face tracking: MediaPipe face + pose landmarkers, on-device (models bundled in assets/ft). 0.10.21 is the
+    // newest release that still ships 32-bit armeabi-v7a natives next to arm64-v8a.
+    implementation 'com.google.mediapipe:tasks-vision:0.10.21'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.16'
+    testImplementation 'androidx.test:core:1.6.1'
+}

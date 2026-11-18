@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="112dp" android:layout_height="84dp" android:layout_marginEnd="10dp"
+    app:cardBackgroundColor="#101018" app:cardCornerRadius="14dp" app:strokeWidth="2dp" app:strokeColor="@color/kl_stroke"
+    android:clickable="true" android:focusable="true">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <com.viral.shortsmaker.captions.CaptionPreviewView android:id="@+id/swatch" android:layout_width="match_parent" android:layout_height="58dp"/>
+        <TextView android:id="@+id/tvStyleName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="bottom" android:gravity="center" android:paddingBottom="6dp" android:text="Hormozi" android:textColor="@color/kl_text_dim" android:textSize="11sp"/>
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>
