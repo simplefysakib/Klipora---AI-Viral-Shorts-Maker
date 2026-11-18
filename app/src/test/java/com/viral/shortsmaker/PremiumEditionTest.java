@@ -60,8 +60,8 @@ public class PremiumEditionTest {
         assertEquals(BuildConfig.PREMIUM ? "premium" : "free", BuildConfig.FLAVOR);
         // same app either way: installs over the normal build
         assertEquals("com.viral.shortsmaker", BuildConfig.APPLICATION_ID);
-        assertEquals(45, BuildConfig.VERSION_CODE);
-        assertEquals("5.8", BuildConfig.VERSION_NAME);
+        assertEquals(47, BuildConfig.VERSION_CODE);
+        assertEquals("5.9.1", BuildConfig.VERSION_NAME);
     }
 
     @Test public void gatesOnFreshInstall() {
